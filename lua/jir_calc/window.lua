@@ -1,5 +1,5 @@
 local M = {}
-local jir_calc = require('jir_calc.jir_calc_setup')
+local jir_calc = require('jir_calc/jir_calc_setup')
 
 local cmd_buf
 local cmd_win
@@ -163,13 +163,13 @@ function M.open_window()
     vim.api.nvim_win_set_cursor(cmd_win, { 1, 3 }) -- Position cursor after '> '
 
     -- Set initial content of the command buffer
-    vim.api.nvim_buf_set_keymap(cmd_buf,  'i', '<CR>',   "<cmd>lua require'jir_calc.command'.handle_command(" .. win .. ")<CR>", { noremap = true, silent = true })
-    vim.api.nvim_buf_set_keymap(main_buf, 'i', '<Esc>',  "<cmd>lua require'jir_calc.window'.close_windows()<CR><ESC>", { noremap = true, silent = true })
-    vim.api.nvim_buf_set_keymap(main_buf, 'n', '<Esc>',  "<cmd>lua require'jir_calc.window'.close_windows()<CR><ESC>", { noremap = true, silent = true })
-    vim.api.nvim_buf_set_keymap(cmd_buf,  'i', '<Esc>',  "<cmd>lua require'jir_calc.window'.close_windows()<CR><ESC>", { noremap = true, silent = true })
-    vim.api.nvim_buf_set_keymap(cmd_buf,  'n', '<Esc>',  "<cmd>lua require'jir_calc.window'.close_windows()<CR><ESC>", { noremap = true, silent = true })
-    vim.api.nvim_buf_set_keymap(cmd_buf,  'i', '<Up>',   "<cmd>lua require'jir_calc.window'.prev_cmd_history()<CR>", { noremap = true, silent = true })
-    vim.api.nvim_buf_set_keymap(cmd_buf,  'i', '<Down>', "<cmd>lua require'jir_calc.window'.next_cmd_history()<CR>", { noremap = true, silent = true })
+    vim.api.nvim_buf_set_keymap(cmd_buf,  'i', '<CR>',   "<cmd>lua require'jir_calc/command'.handle_command(" .. win .. ")<CR>", { noremap = true, silent = true })
+    vim.api.nvim_buf_set_keymap(main_buf, 'i', '<Esc>',  "<cmd>lua require'jir_calc/window'.close_windows()<CR><ESC>", { noremap = true, silent = true })
+    vim.api.nvim_buf_set_keymap(main_buf, 'n', '<Esc>',  "<cmd>lua require'jir_calc/window'.close_windows()<CR><ESC>", { noremap = true, silent = true })
+    vim.api.nvim_buf_set_keymap(cmd_buf,  'i', '<Esc>',  "<cmd>lua require'jir_calc/window'.close_windows()<CR><ESC>", { noremap = true, silent = true })
+    vim.api.nvim_buf_set_keymap(cmd_buf,  'n', '<Esc>',  "<cmd>lua require'jir_calc/window'.close_windows()<CR><ESC>", { noremap = true, silent = true })
+    vim.api.nvim_buf_set_keymap(cmd_buf,  'i', '<Up>',   "<cmd>lua require'jir_calc/window'.prev_cmd_history()<CR>", { noremap = true, silent = true })
+    vim.api.nvim_buf_set_keymap(cmd_buf,  'i', '<Down>', "<cmd>lua require'jir_calc/window'.next_cmd_history()<CR>", { noremap = true, silent = true })
 
     return win, cmd_win
 end
